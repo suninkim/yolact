@@ -1,0 +1,12 @@
+trained_model: weights/yolact_resnet50_54_800000.pth
+device: cpu
+top_k: 15
+score_threshold: 80
+display_masks: True
+crop: True
+display_lincomb: True
+display_text: True
+display_bboxes: True
+display_scores: True
+fast_nms: True
+cross_class_nms: False
