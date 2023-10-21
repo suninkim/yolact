@@ -231,6 +231,18 @@ if __name__ == "__main__":
     with open(detection_cfg_path, "r") as stream:
         task_cfg = yaml.safe_load(stream)
     detection_system = Yolact(task_cfg)
+
+    camera_num = 0
+    cap = cv2.VideoCapture(camera_num)
+    if not cap.isOpened():
+        print("Failed to open camera.")
+
+    while True:
+        ret, frame = cap.read()
+        detected_image = detection_system.get_detection_result(frame)
+        plt.show(detected_image)
+        plt.waitkeys()
+
     image = plt.imread("../test.png")
     detected_image = detection_system.get_detection_result(image)
     plt.show(detected_image)
